@@ -146,6 +146,11 @@ final class Preferences: ObservableObject {
     @Published var pilot: Bool {
         didSet { store.set(pilot, forKey: "pilot") }
     }
+    /// Claude plans and Jev walks, rather than Jev alone. Off unless asked
+    /// for: it sends the page to Anthropic, on the person's own key.
+    @Published var pilotClaude: Bool {
+        didSet { store.set(pilotClaude, forKey: "pilot.claude") }
+    }
 
     init() {
         // Carried over from when there were four ways of holding the browser
@@ -203,6 +208,7 @@ final class Preferences: ObservableObject {
         welcomed = store.bool(forKey: "welcomed") || store.object(forKey: "glyph") != nil
         usesSpaces = store.bool(forKey: "spaces")
         pilot = store.bool(forKey: "pilot")
+        pilotClaude = store.bool(forKey: "pilot.claude")
         let scrolls = store.bool(forKey: "autoscroll")
         autoScroll = scrolls
         AutoScroll.on = scrolls

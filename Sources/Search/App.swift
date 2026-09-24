@@ -52,9 +52,9 @@ struct SearchApp: App {
                     .disabled(!browser.finding)
                 if browser.prefs.pilot {
                     Divider()
-                    Button("Ask Jev…") { browser.pilot.show() }
+                    Button(browser.prefs.pilotClaude ? "Ask Claude…" : "Ask Jev…") { browser.pilot.show() }
                         .keyboardShortcut("j")
-                        .disabled(browser.active?.isBlank ?? true)
+                        .disabled(browser.active == nil)
                 }
             }
             CommandGroup(replacing: .toolbar) {

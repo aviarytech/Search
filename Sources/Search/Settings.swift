@@ -215,6 +215,12 @@ struct SettingsPanel: View {
             Line("Let Jev use the page", "⌘J, then say what to do, and TypeSafe's Jev clicks and types it through. The page's links, buttons and text go to TypeSafe. Needs TYPESAFE_API_KEY in ~/.env") {
                 Switch(on: $prefs.pilot)
             }
+            if prefs.pilot {
+                Rule()
+                Line("Let Claude plan it", "Claude reads the page, works out the steps and writes what needs typing, and hands Jev the clicking. The page goes to Anthropic too. Needs ANTHROPIC_API_KEY in ~/.env") {
+                    Switch(on: $prefs.pilotClaude)
+                }
+            }
             Rule()
             Line("Let a script drive Search", "A local socket for testing. Its tabs open beside yours with a flask on them and never take over — see ./bench") {
                 Switch(on: $prefs.bench)

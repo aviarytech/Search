@@ -49,6 +49,7 @@ On purpose:
 | History, bookmarks, open tabs, hidden elements | Small JSON files in `~/Library/Application Support/Search/` | You. |
 | Cookies and site data | WebKit's own store for the app | The sites that set them, as in any browser. |
 | Extensions | Unpacked in `~/Library/Application Support/Search/Extensions/`, their data in WebKit's extension store | Each extension, within the permissions you accepted when adding it. |
+| Claude (off unless you turn it on, with Jev) | While it works on a task you gave it, the page's address, title, text and the names of its links, buttons and fields go to Anthropic's API (or the server in `ANTHROPIC_BASE_URL`), with the key from `~/.env` | Anthropic. Password fields are never read or sent. |
 | Jev (off unless you turn it on) | While it works on a page you asked it to, that page's address, title, text and the names of its links, buttons and fields go to TypeSafe's API, with your key from `~/.env` | TypeSafe. Password fields are never read or sent. |
 | Anything else | Nowhere. There is no server. | — |
 

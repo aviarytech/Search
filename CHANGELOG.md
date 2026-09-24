@@ -13,6 +13,7 @@ in [ROADMAP.md](ROADMAP.md).
 
 ### Added
 
+- Jev can use the page for you: ⌘J, say what you want done, and TypeSafe's Jev clicks, types, picks from dropdowns and scrolls its way there, a step at a time, saying what it is doing as it goes; ■ or esc stops it. It only ever types words from what you asked, and never touches a password field. It needs a TypeSafe API key as `TYPESAFE_API_KEY` in `~/.env`, and sends the page's links, buttons and text to TypeSafe while it works. Settings › General › Let Jev use the page, off by default.
 - Spaces with the tabs across the top: two fingers up or down over the bar, or a notch of a mouse wheel, bring the next space's tabs in as these go; past the last, a new space is made right in the bar. "New Space…" makes it in place in the column too.
 - Reopen Closed Tab is in the right-click menu of every tab, in the row and in the column, beside Close Other Tabs; it was only on ⌘⇧T and in the History menu. Thanks [@andupoto](https://x.com/andupoto) for asking
 - Extensions on private tabs, if you allow them: Settings › Extensions › Allow on private tabs, off by default. It applies to private tabs opened after it is turned on. Thanks [@merttopuz](https://github.com/merttopuz) ([#55](https://github.com/driceroland/Search/pull/55))

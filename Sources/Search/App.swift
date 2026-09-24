@@ -50,6 +50,12 @@ struct SearchApp: App {
                 Button("Find Previous") { browser.look(forward: false) }
                     .keyboardShortcut("g", modifiers: [.command, .shift])
                     .disabled(!browser.finding)
+                if browser.prefs.pilot {
+                    Divider()
+                    Button("Ask Jev…") { browser.pilot.show() }
+                        .keyboardShortcut("j")
+                        .disabled(browser.active?.isBlank ?? true)
+                }
             }
             CommandGroup(replacing: .toolbar) {
                 Toggle("Show Tabs in Sidebar", isOn: Binding(
@@ -293,6 +299,7 @@ struct ContentView: View {
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
             StoreOffer(browser: browser)
+            PilotSlot(browser: browser, pilot: browser.pilot)
             if browser.veiling {
                 hint("Click anything to hide it   ⌘Z undo   esc done")
                     .transition(.move(edge: .bottom).combined(with: .opacity))
@@ -688,6 +695,10 @@ struct ContentView: View {
             }
             if browser.finding {
                 browser.closeFind()
+                return true
+            }
+            if browser.pilot.open {
+                browser.pilot.close()
                 return true
             }
             // One step at a time: the list first, then the field.

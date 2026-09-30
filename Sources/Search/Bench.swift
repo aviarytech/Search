@@ -1344,7 +1344,7 @@ final class Bench {
     /// Click, type into, or submit the element a selector names. Typing goes
     /// through the field's own setter and fires the events a keystroke
     /// would, the same as the password filler, so frameworks notice.
-    private static func act(_ verb: String, selector: String, text: String) -> String {
+    static func act(_ verb: String, selector: String, text: String) -> String {
         let sel = (try? JSONSerialization.data(withJSONObject: [selector])).flatMap { String(data: $0, encoding: .utf8) }.map { String($0.dropFirst().dropLast()) } ?? "\"\""
         let txt = (try? JSONSerialization.data(withJSONObject: [text])).flatMap { String(data: $0, encoding: .utf8) }.map { String($0.dropFirst().dropLast()) } ?? "\"\""
         return """

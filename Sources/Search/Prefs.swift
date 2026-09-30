@@ -141,6 +141,17 @@ final class Preferences: ObservableObject {
         didSet { store.set(usesSpaces, forKey: "spaces") }
     }
 
+    /// Jev driving the page in front, from ⌘J (see Pilot.swift). Off unless
+    /// asked for: it sends what is on the page to TypeSafe.
+    @Published var pilot: Bool {
+        didSet { store.set(pilot, forKey: "pilot") }
+    }
+    /// Claude plans and Jev walks, rather than Jev alone. Off unless asked
+    /// for: it sends the page to Anthropic, on the person's own key.
+    @Published var pilotClaude: Bool {
+        didSet { store.set(pilotClaude, forKey: "pilot.claude") }
+    }
+
     init() {
         // Carried over from when there were four ways of holding the browser
         // and this was one of them.
@@ -196,6 +207,8 @@ final class Preferences: ObservableObject {
         // existed; they are not asked to sit through it.
         welcomed = store.bool(forKey: "welcomed") || store.object(forKey: "glyph") != nil
         usesSpaces = store.bool(forKey: "spaces")
+        pilot = store.bool(forKey: "pilot")
+        pilotClaude = store.bool(forKey: "pilot.claude")
         let scrolls = store.bool(forKey: "autoscroll")
         autoScroll = scrolls
         AutoScroll.on = scrolls

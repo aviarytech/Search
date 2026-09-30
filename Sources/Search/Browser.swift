@@ -32,6 +32,8 @@ final class Browser: NSObject, ObservableObject {
     /// Everything there is to set. Held here so the whole window redraws when
     /// one of them changes.
     let prefs = Preferences()
+    /// Jev, when it has been asked to do something on the page.
+    lazy var pilot = Pilot(browser: self)
     /// The settings panel.
     @Published var tuning = false
     /// The first-launch walk-through, over everything. Also from the menu.
